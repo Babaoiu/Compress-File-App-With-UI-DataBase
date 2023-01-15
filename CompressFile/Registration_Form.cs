@@ -3,6 +3,7 @@
     public partial class Registration_Form : Form
     {
         private const string RegistrationGif_path = "E:\\Microsoft Visual Studio(projects)\\CompressFile\\CompressFile\\Reg_Background\\giphy_Registration.gif";
+        private readonly FileStream FileStream_stream = new FileStream(RegistrationGif_path, FileMode.OpenOrCreate, FileAccess.Read);
         private Bitmap Reg_Background;
         private Point Draw;
         private Rectangle rectangle;
@@ -11,7 +12,7 @@
         public Registration_Form()
         {
             InitializeComponent();
-            Reg_Background = new Bitmap(RegistrationGif_path);
+            Reg_Background = new Bitmap(FileStream_stream);
             Draw = new Point(-180, -60);
             rectangle = new Rectangle(Draw, Reg_Background.Size);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);

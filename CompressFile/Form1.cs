@@ -1,16 +1,19 @@
 using MySql.Data.MySqlClient;
+
 namespace CompressFile
 {
     public partial class Welcome_folder : Form
     {
+        //"E:\\Microsoft Visual Studio(projects)\\CompressFile\\CompressFile\\Reg_Background\\giphy.gif";        
         private const string GifPath = "E:\\Microsoft Visual Studio(projects)\\CompressFile\\CompressFile\\Reg_Background\\giphy.gif";
+        private readonly FileStream FileStream_stream = new FileStream(GifPath, FileMode.OpenOrCreate, FileAccess.Read);
         private Bitmap GifBackGround;
         private Point Draw;
         private Rectangle InvalidRectangle;
         public Welcome_folder()
         {
             InitializeComponent();
-            GifBackGround = new Bitmap(GifPath);
+            GifBackGround = new Bitmap(FileStream_stream);
             Draw = new Point(80, 50);
             InvalidRectangle = new Rectangle(Draw, GifBackGround.Size);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
